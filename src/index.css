@@ -1,0 +1,47 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue-dark:    hsl(209.7, 100%, 10%);
+  --blue-main:    hsl(209.7, 100%, 19.8%);
+  --blue-mid:     hsl(209.7, 80%, 28%);
+  --white:        #ffffff;
+  --white-70:     rgba(255, 255, 255, 0.70);
+  --white-45:     rgba(255, 255, 255, 0.45);
+  --white-12:     rgba(255, 255, 255, 0.12);
+  --white-08:     rgba(255, 255, 255, 0.08);
+  --accent-live:  #ff3b3b;
+  --accent-green: #6ef0a0;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Barlow', sans-serif;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--blue-main);
+  color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
