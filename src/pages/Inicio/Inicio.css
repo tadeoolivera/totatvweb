@@ -1,0 +1,22 @@
+.inicio-bg {
+  position: absolute;
+  inset: 0;
+  background: url('/inicio-bg.webp') center/cover no-repeat;
+  filter: brightness(0.7);
+  z-index: 1;
+}
+
+.inicio-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  padding: 40px;
+  z-index: 2;
+  flex: 1;
+}
+
+.inicio-content > h1 {
+  font-size: 2rem;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

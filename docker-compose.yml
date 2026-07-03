@@ -1,0 +1,39 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: Tade
+      POSTGRES_DB: totatv_auth
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./server/schema/auth.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U Tade -d totatv_auth"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_USER: Tade
+      DB_PASSWORD: "Nfuhr12048nvbn"
+      DB_NAME: totatv_auth
+      JWT_SECRET: ASNFJN91fANSjfn12uhru9nF133ugewf78mN
+      PORT: "3000"
+      NODE_ENV: development
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
