@@ -12,7 +12,8 @@ const pool = new Pool({
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'totatv_auth',
   max: 10,
-  idleTimeoutMillis: 30000
+  idleTimeoutMillis: 30000,
+  ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : false
 })
 
 const SALT_ROUNDS = 12

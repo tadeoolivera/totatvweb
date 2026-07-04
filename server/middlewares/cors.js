@@ -3,7 +3,7 @@ import cors from 'cors'
 const ACCEPTED_ORIGINS = [
   'http://127.0.0.1:5500',
   'http://localhost:5173',
-  'https://mfqq2dls-5173.brs.devtunnels.ms'
+  ...(process.env.CLIENT_URL ? [process.env.CLIENT_URL] : [])
 ]
 
 export const corsMiddleware = cors({
@@ -12,7 +12,8 @@ export const corsMiddleware = cors({
 
     const isAllowed = ACCEPTED_ORIGINS.includes(origin) ||
       /^https?:\/\/localhost(:\d+)?$/.test(origin) ||
-      /^https:\/\/[\w-]+-\d+\.brs\.devtunnels\.ms$/.test(origin)
+      /^https:\/\/[\w-]+-\d+\.brs\.devtunnels\.ms$/.test(origin) ||
+      /^https:\/\/[\w-]+\.pages\.dev$/.test(origin)
 
     if (isAllowed) return callback(null, true)
 
