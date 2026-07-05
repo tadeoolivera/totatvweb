@@ -1,6 +1,7 @@
 .main-layout {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
 }
 
 .nav {
@@ -144,6 +145,8 @@
 
   .links {
     display: flex;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .menu-open .links,

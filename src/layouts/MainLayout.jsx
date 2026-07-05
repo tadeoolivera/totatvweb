@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { useAuth } from '../context/useAuth.js'
 import './MainLayout.css'
@@ -8,6 +8,15 @@ const links = ['Inicio', 'Noticias', 'Nosotros', 'Otros']
 const MainLayout = () => {
   const { user, loading, logout } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [menuOpen])
 
   const closeMenu = () => setMenuOpen(false)
 
