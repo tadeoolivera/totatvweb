@@ -1,3 +1,8 @@
+.main-layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
 .nav {
   position: relative;
   display: flex;
@@ -77,12 +82,84 @@
   color: var(--white);
 }
 
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 110;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.menu-open .hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-open .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-open .hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 @media (max-width: 768px) {
   .nav {
     padding: 14px 20px;
   }
 
+  .hamburger {
+    display: flex;
+  }
+
+  .links,
+  .login-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: var(--blue-dark);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 100;
+  }
+
   .links {
-    display: none;
+    display: flex;
+  }
+
+  .menu-open .links,
+  .menu-open .login-button {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .links a {
+    font-size: 18px;
+  }
+
+  .login-button {
+    top: auto;
+    bottom: 40px;
+    height: auto;
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }

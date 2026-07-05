@@ -155,3 +155,27 @@
   transform: translateX(-15px);
   line-height: 1.2;
 }
+
+.workinprogress {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #d2d2d2;
+  text-align: center;
+  padding: 0 20px;
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .nosotros-content {
+    opacity: 0;
+  }
+
+  .workinprogress {
+    opacity: 1;
+  }
+}

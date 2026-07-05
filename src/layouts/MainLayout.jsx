@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import { useAuth } from '../context/useAuth.js'
 import './MainLayout.css'
@@ -6,12 +7,24 @@ const links = ['Inicio', 'Noticias', 'Nosotros', 'Otros']
 
 const MainLayout = () => {
   const { user, loading, logout } = useAuth()
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <div className="main-layout">
-      <nav className="nav">
+      <nav className={`nav${menuOpen ? ' menu-open' : ''}`}>
         <img src="/logo.png" alt="Tota TV" className="logo" />
-        <ul className="links">
+        <button
+          className="hamburger"
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Menú de navegación"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <ul className="links" onClick={closeMenu}>
           {links.map((link) => (
             <li key={link}>
               {link === 'Inicio' ? (

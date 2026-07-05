@@ -62,6 +62,7 @@ const Nosotros = () => {
   return (
     <div className="default nosotros">
       <div className="bg" />
+      <div className="workinprogress">Esta sección por ahora es únicamente visible para computadoras</div>
       <div className="nosotros-content" ref={containerRef}>
         <div className="photocards-container" ref={photocardContainerRef}>
           {PHOTOCARDS.map((card, i) => (
